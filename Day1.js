@@ -8,8 +8,28 @@ function calculate(text){
     var tokens = text.match(pattern);
     var tokenArray1 =  JSON.stringify(tokens);
     
-    function readTerm(tokenArray){
+    
+    /* What I attempted:
+        I took the parenthesis check from read_operand and inserted it
+        into readTerm, thinking it would be a good idea to make sure that
+        parenthesis get precedence over * or /
         
+        The * and / work, however parenthesis are now screwed up
+    */
+    function readTerm(tokenArray){
+         for (var x = 0; x < tokens.length-2; x++){
+            var num = tokenArray[x]; 
+            if (tokenArray[x+1] == '/'){
+                var newVal1 = num/tokenArray[x+2];
+                tokenArray.splice(x, 3);
+                tokenArray.splice(x, 0, newVal1);
+            }else if(tokenArray[x+1] == '*'){
+                var newVal2 = num*tokenArray[x+2];
+                tokenArray.splice(x, 3);
+                tokenArray.splice(x, 0, newVal2);
+            }    
+        }
+        return read_operand(tokenArray);
     }
     
     
@@ -30,11 +50,11 @@ function calculate(text){
             var tempVal = evaluation(tokenArray);
             if(tokenArray[0] == ")"){
                 tokenArray.shift();
+                console.log(tempVal);
                 return tempVal;
             }else{
                 throw "Missing parenthesis";
             }
-            
         }
         
         var convertedNum = parseFloat(num, 10);
@@ -53,10 +73,12 @@ function calculate(text){
             
         }*/
         
-            var value = read_operand(tokenArray);
+        var value = readTerm(tokenArray);
         
         while (tokenArray.length !== 0 && tokenArray[0] !== ")"){
-            var operator = tokenArray[0];   tokenArray.shift();
+            var operator = tokenArray[0];
+            console.log(operator);
+            tokenArray.shift();
             if (operator != "+" && operator != "-" && operator!="/" && operator!="*"){
                 throw "unrecognized operator";
             }else if(tokenArray.length === 0){
@@ -75,7 +97,7 @@ function calculate(text){
             }
         }
         return value;
-    }
+    }  
     try{
         var val = evaluation(tokens);
         if(tokens.length !== 0){
@@ -89,7 +111,7 @@ function calculate(text){
 
 function setup_calc(div){
     var input = $('<input id="input1"></input>', {type: "text", size: 50});
-    var output = $('<div></div>');
+    var output = $('<div id = "output"></div>');
     var button = $('<button id = "button1">Calculate</button>');
     button.bind("click", function(){
        output.text(String(calculate(input.val()))); 
