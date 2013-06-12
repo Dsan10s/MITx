@@ -40,12 +40,11 @@ function calculate(text){
     // read_operand: looks at array of tokens, and sees if first element is a number
     function read_operand(tokenArray){
         var num = tokenArray[0];
-        var log = new debug('read_operand');
-        log(tokenArray);
+
         console.log('read_operand', tokenArray);
         //checks if the current element is a minus sign, and then creates a negative if true
         if (num == "-"){
-            log(num);
+            
             var numToNeg = tokenArray[1];
             tokenArray.shift(); tokenArray.shift();
             return -numToNeg;

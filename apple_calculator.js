@@ -10,8 +10,8 @@ $(document).ready(function(){
         var output = calculate(input.val());
         input.val(output);
     })
-    $(".clearbutton").bind("click", function(){
+    $('.clearbutton').bind("click", function(){
         input.val("");
-    })
+    });
 
 });
