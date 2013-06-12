@@ -1,3 +1,4 @@
+
 //we need to get the tokens from the input
 //tokens will be of type:
 //  numbers
@@ -17,17 +18,20 @@ function calculate(text){
         The * and / work, however parenthesis are now screwed up
     */
     function readTerm(tokenArray){
-         for (var x = 0; x < tokens.length-2; x++){
-            var num = tokenArray[x]; 
-            if (tokenArray[x+1] == '/'){
-                var newVal1 = num/tokenArray[x+2];
-                tokenArray.splice(x, 3);
-                tokenArray.splice(x, 0, newVal1);
-            }else if(tokenArray[x+1] == '*'){
-                var newVal2 = num*tokenArray[x+2];
-                tokenArray.splice(x, 3);
-                tokenArray.splice(x, 0, newVal2);
-            }    
+        console.log('readterm', tokenArray);
+        while(tokenArray.length > 2) {
+            var num = tokenArray[0]; 
+            if (tokenArray[1] == '/'){
+                var newVal1 = num/tokenArray[2];
+                tokenArray.splice(0, 3);
+                tokenArray.splice(0, 0, newVal1);
+            }else if(tokenArray[1] == '*'){
+                var newVal2 = num*tokenArray[2];
+                tokenArray.splice(0, 3);
+                tokenArray.splice(0, 0, newVal2);
+            }else {
+                break;
+            }
         }
         return read_operand(tokenArray);
     }
@@ -36,9 +40,12 @@ function calculate(text){
     // read_operand: looks at array of tokens, and sees if first element is a number
     function read_operand(tokenArray){
         var num = tokenArray[0];
-        
+        var log = new debug('read_operand');
+        log(tokenArray);
+        console.log('read_operand', tokenArray);
         //checks if the current element is a minus sign, and then creates a negative if true
         if (num == "-"){
+            log(num);
             var numToNeg = tokenArray[1];
             tokenArray.shift(); tokenArray.shift();
             return -numToNeg;
@@ -48,6 +55,8 @@ function calculate(text){
         //checks if parenthesis were used, and makes an element out of what lies between the parenthesis if true
         if (num == "("){
             var tempVal = evaluation(tokenArray);
+            console.log('read_operand tempVal', tempVal);
+            console.log('read_operand tokenArray', tokenArray);
             if(tokenArray[0] == ")"){
                 tokenArray.shift();
                 console.log(tempVal);
@@ -66,6 +75,7 @@ function calculate(text){
     }
     // evaluation: actually does the math
     function evaluation(tokenArray){
+        console.log('first evaluation', tokenArray);
         if (tokenArray.length === 0){
             throw "missing operand";
         }
@@ -77,6 +87,7 @@ function calculate(text){
         
         while (tokenArray.length !== 0 && tokenArray[0] !== ")"){
             var operator = tokenArray[0];
+            console.log('evaluation tokenArray', tokenArray);
             console.log(operator);
             tokenArray.shift();
             if (operator != "+" && operator != "-" && operator!="/" && operator!="*"){
@@ -84,7 +95,7 @@ function calculate(text){
             }else if(tokenArray.length === 0){
                 throw "missing operand";
             }
-            var temp = read_operand(tokenArray);
+            var temp = readTerm(tokenArray);
             //readTerm(operator)
             if(operator === "+"){
                 value = value + temp;
@@ -130,5 +141,23 @@ $(document).ready(function(){
        // 'this' refers to the <div> with class calculator
        setup_calc(this);
        
-   }); 
+   });
+   
+   var thisDebug = new debug('Malcom');
+   thisDebug('test: ', {test: 'hi'});
 });
+
+function debug(name) {
+    var self = this;
+    this.name = name;
+    return function() {
+        var first = arguments[0];
+        if (typeof arguments[0] === 'string') {
+            arguments[0] = self.name + ': ' + first;
+        }
+        else {
+            arguments.splice(0,0,self.name + ': ');
+        }
+        console.log.apply(console, arguments);
+    }
+}
