@@ -65,3 +65,6 @@
 
 .inspector .property-editor .property-list {
 }
+.highlighted{
+  border: 2px solid red;
+}

@@ -9,57 +9,83 @@ var Inspector = function($) {
 
   // The root element of the inspector.
   var root = null;
-
+  var inspectOn = false;
   var template = ""
     + "<div class='tray'>"
     + "  <textarea class='text-editor'></textarea>"
     + "  <div class='property-editor'>"
     + "    <div class='node-lookup'>"
     + "      <input class='selector' /><input class='nth' />"
-    + "      <button>Search</button>"
+    + "      <button class='search-button'>Search</button>"
+    + "      <button class='inspect-button'>Inspect element"
     + "    </div>"
     + "    <div class='property-list'>"
     + "    </div>" 
     + "  </div>" 
     + "</div>" 
     + "<div class='handle'></div>";
+  var toggle = function() {
+      if (root.css("top") === "0px") {
+        root.animate({ "top": "-300px" }, 500);
+      } else {
+      root.animate({ "top": "0px" }, 500);
+    };
+  };
+  var searchBySelector = function() {
+    var selectorBox = root.find(".selector");
+    var selectorStr = selectorBox.val();
+    var selection = $(selectorStr);
+    var html = selection.html();
+    var textEditor = root.find(".text-editor");
+    textEditor.val(html);
+  };
 
-var toggle = function(){
-    if (root.css('top') == '0px') {
-        
-        root.animate({"top":"-300px"}, 500);
-    }else{
-        root.animate({"top":"0px"}, 500);
-    }
-}; 
+  var toggleInspect = function() {
+      console.log("toggleInspect called");
+      if (inspectOn) {
+        inspectOn = false;
+        $('*').off("mouseenter", mouseEntered).off("mouseleave", mouseExited);
+      } else {
+        inspectOn = true;
+        $("*").on("mouseenter", mouseEntered).on("mouseleave", mouseExited);
+      };
+  };
 
-var searchBySelector = function(){
-  var selectorBox = root.find(".selector");
-  var selectorStr = selectorBox.val();
-  var selection = $(selectorStr);
-  var html = selection.html();
-  var textEditor = root.find(".text-editor");
-  textEditor.val(html);
-};
+  var mouseEntered = function(evt) {
+      var target = $(evt.target);
+      $(".highlighted").removeClass("highlighted");
+      console.log("entered", target);
+      target.addClass("highlighted");
+      evt.stopPropagation();
 
-    
+  };
+
+  var mouseExited = function(evt) {
+      var target = $(evt.target);
+      console.log("exited", target);
+      $(".highlighted").removeClass("highlighted");
+      
+  };
+  
+  var highlight = function() {
+      
+  };
   /*
    * Construct the UI
    */
-
   exports.initialize = function() {
     root = $("<div class='inspector'></div>").appendTo($('body'));
 
-    root.append(template);
-    root.find('.handle').on('click', toggle);
-    root.find(".node-lookup button").on("click", searchBySelector);
+    root.append(template); 
+    root.find(".handle").on("click", toggle);
+    root.find(".node-lookup .search-button").on("click", searchBySelector);
+    root.find(".node-lookup .inspect-button").on("click", toggleInspect);
   };
-    
-  exports.toggle = toggle;    
+
+  exports.toggle = toggle
+  
   return exports;
 };
-
-
 
 /*****************************************************************************
  * Boot up the web inspector!
