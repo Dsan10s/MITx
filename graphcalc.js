@@ -1,7 +1,7 @@
 var graphcalc = (function(){
     var exports = {};
     function setupGraph(div){
-        var canvas = $("<canvas width = '400px' height = '300px'></canvas>");
+        var canvas = $("<canvas class = 'jqCanvas' width = '400px' height = '300px'></canvas>");
         /*var domCanvas = canvas[0];
         var ctx = domCanvas.getContext('2d');*/
 
@@ -93,6 +93,37 @@ var graphcalc = (function(){
             
         }
         ctx.stroke();
+        // Below we will define a function that will follow the mouse and evaluate the y value at the mouse's x position
+        var jqCanvas = $('.jqCanvas');
+        var domCanvas = jqCanvas[0];
+        var ctx2 = domCanvas.getContext('2d');
+        var img = ctx2.getImageData(0,0,jqCanvas.width(),jqCanvas.height());
+        
+        ctx2.putImageData(img, 0, 0);
+        jqCanvas.on("mousemove", function(event){
+            var mx = event.pageX;
+            //probably will not need my
+            var my = event.pageY;
+            //now we reset our mx and my values so they are with respect to the canvas, not with respect to the page
+            var offset = jqCanvas.offset();
+            mx = mx-offset.left;
+            my = my-offset.top;
+            ctx2.putImageData(img, 0, 0);
+            ctx2.beginPath();
+            ctx2.moveTo(mx, jqCanvas.width());
+            ctx2.lineTo(mx, 0);
+            ctx2.strokeStyle = "black";
+            ctx2.lineWdith = 1;
+            ctx2.stroke();
+            //the vertical line has just been drawn
+            //now to evaluate the value at the mouse's x value
+            var xVal = minX + (mx*(maxX-minX)/jqCanvas.width());
+            var yVal = coordinateList[mx][1];
+            console.log("("+xVal+","+yVal+")");
+
+            $('.x').html("X: " + xVal);
+            $('.y').html("Y: " + yVal);
+        })
     }
     return exports;
 }());
