@@ -1,0 +1,51 @@
+body{
+    margin: 0;    
+}    
+input{
+    width: 381px;
+    height: 96px;
+    margin-bottom: 16px;
+    margin-left: 21px;
+    margin-top: 9px;
+    background-color: #eaf5bc;
+    border-radius: 12px;
+    border-width: 5px;
+    font-size: 70px;
+}
+#fullCalc{
+    width: 424px;
+    height: 519px;
+    background-color: #b8b8b8;
+    margin: 0 0 0 0;
+}
+.row{
+    margin-left:13px;
+}
+.allbuttons{
+    background-color: #e8e8e8;
+    margin: 2px;
+    border-left: 0;
+    border-right: 0;
+    border-radius: 12px;
+    font-size: 26px;
+    /*font-family: Monaco;*/
+    border-width: 4px;
+}
+.regbuttons{
+    width: 93px;
+    height: 56px; 
+}
+.zero{
+    width: 194px;
+    height: 54px;
+}
+.equals{
+    width: 93px;
+    height: 116px;
+}
+.lastRow{
+    margin-top: -57px;
+}
+p{
+    margin-top: 56px;
+}

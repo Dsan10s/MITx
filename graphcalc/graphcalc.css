@@ -1,0 +1,16 @@
+.graphcalc canvas{
+    background-color: #F0FFF0;
+    border: 2px solid black;
+}
+/*#fxInput{
+}*/
+#fxDiv{
+    width: 100%;
+}
+#minMaxDiv{
+    width: 50%;
+}
+
+.graphcalc{
+    width: 306px;
+}

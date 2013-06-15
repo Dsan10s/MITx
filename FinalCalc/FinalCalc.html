@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <title>Graphing Calculator</title>
+        <script src="https://web.mit.edu/6.mitx/www/calculator.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        <script src = "FinalCalc.js"></script>
+        <script src = "Day1.js"></script>
+        <link href="FinalCalc.css" rel="stylesheet"></link>
+        <!-- <script src="https://web.mit.edu/6.mitx/www/calculator.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        <script src="graphcalc.js"></script>
+        <script src="Day1.js"></script>
+        <script src="appleCalc.js"></script>
+        <link href="FinalCalc.css" rel="stylesheet"></link>
+        <link rel="stylesheet" type="text/css" href="graphcalc.css">
+        <link href="appleCalc.css" rel="stylesheet"></link> -->
+    </head>
+    <body>
+
+        <div id = "totalCalc">
+            <h1>Graphing Calculator</h1>
+            <div class="graphcalc"></div>
+            <div id="fullCalc">
+                <div><input id="calcDisplay"></input></div>
+                <div class = "row">
+                    <button class="allbuttons regbuttons">MC</button>
+                    <button class="allbuttons regbuttons">M+</button>
+                    <button class="allbuttons regbuttons">M-</button>
+                    <button class="allbuttons regbuttons">MR</button>
+                </div>
+                <div class = "row">
+                    <button class="allbuttons regbuttons clearbutton">C</button>
+                    <button class="allbuttons regbuttons">&plusmn;</button>
+                    <button class="allbuttons regbuttons charbutton" data-char="/">&divide;</button>
+                    <button class="allbuttons regbuttons charbutton" data-char="*">X</button>
+                </div>
+                <div class = "row">
+                    <button class="allbuttons regbuttons charbutton" data-char="7">7</button>
+                    <button class="allbuttons regbuttons charbutton" data-char="8">8</button>
+                    <button class="allbuttons regbuttons charbutton" data-char="9">9</button>
+                    <button class="allbuttons regbuttons charbutton" data-char="-">-</button>             
+                </div>
+                <div class = "row">
+                    <button class="allbuttons regbuttons charbutton" data-char="4">4</button>
+                    <button class="allbuttons regbuttons charbutton" data-char="5">5</button>
+                    <button class="allbuttons regbuttons charbutton" data-char="6">6</button>
+                    <button class="allbuttons regbuttons charbutton" data-char="+">+</button>
+                </div>
+                <div id = "rowFive" class = "row">
+                    <button class="allbuttons regbuttons charbutton" data-char="1">1</button>
+                    <button class="allbuttons regbuttons charbutton" data-char="2">2</button>
+                    <button class="allbuttons regbuttons charbutton" data-char="3">3</button>
+                    <!-- <button id="invButton" class="allbuttons regbuttons charbutton"></button> -->
+                </div>
+                <div class = "row lastRow">
+                    <button class="allbuttons zero charbutton" data-char="0">0</button>
+                    <button class="allbuttons regbuttons charbutton" data-char=".">.</button>
+                    <button class="allbuttons equals"><p>=</p></button>
+                </div>
+            </div>
+        </div>
+        <img class="widget" src="calcWidget.png" onclick = "toggleCalc()">
+    </body>
+</html>

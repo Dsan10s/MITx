@@ -1,0 +1,72 @@
+/*I'm a comment...hi*/
+body{
+    margin: 0 0 0 0;
+    background-image: url(Paper1.jpg);
+}
+#logo{
+    position: absolute;
+    display: box;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10pt;
+    height: 70pt;
+    width: 70pt;
+}
+#space1{
+    height:5px;
+}
+#search{
+    float: left;
+    margin-left: 5pt;
+    margin-top: 5pt;
+    height: 40pt;
+    width: 30%;
+    font-size: 24pt;
+    border-radius: 5pt;
+}
+#header{
+    height: 50pt;
+    width: 100%;
+    background-color: #D00000;
+}
+#Title{
+    color: white;
+    text-align: right;
+    font-family: Garamond;
+    font-size: 45pt;
+    margin-right: 60pt;
+}
+h1{
+    font-size: 40pt;
+    text-align: center;
+    font-family: Tahoma;
+    font-weight: lighter;
+}  
+.calculator{
+    text-align: center;
+    font-size: 24pt;
+}
+.calculator button{
+    font-size: 24pt;
+    width: 19%;
+    padding-top: 15px;
+    border-radius: 5pt;
+    
+}
+.calculator button:hover{
+    background-color: white;
+}
+.calculator input{
+    width: 79%;
+    font-size: 24pt;
+    padding-top: 15px;
+    border-radius: 5pt;
+    margin-right: 1pt;
+}
+.calculator input:hover{
+    background-color: #eafffd;
+}
+#output{
+    text-align: left;
+    margin-left: 15pt;
+}
