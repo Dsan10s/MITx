@@ -10,7 +10,7 @@ var toggleCalc = function(){
 		calc.animate({"opacity": "0"}, 500);
 		widget.animate({"margin-left": "-230px","width": "460px" ,"height": "460px"}, 500)
 
-	};
+	}
 }
 
 /*$('.widget').on("click", console.log("click"));*/
@@ -33,11 +33,12 @@ var graphcalc = (function(){
         var div1 = $('<div id = "fxDiv"></div>');
         var div2 = $('<div id = "minMaxDiv"></div>');
         var fxInput = $('<input class = "graphInput" id = "fxInput" value="x*x"></input>');
+        /*var clearPlot = $('<button class = "text" id = "plotClear">Clear</button>');*/
         var minXInput = $('<input class = "graphInput" id = "minXInput" value="-5"></input>');
         var maxXInput = $('<input class = "graphInput" id = "maxXInput" value="5"></input>');
         var plotButton = $('<button class = "text" id = "plotButton">Plot</button>');
         
-        $(div1).append($('<div class = "text" id = "fx">F(x): </div>') , fxInput);
+        $(div1).append($('<div class = "text" id = "fx">F(x): </div>') , fxInput/*, clearPlot*/);
         $(div2).append($('<div class = "text" id = "minXText">Min X:</div>'), minXInput,$('<div class = "text" id = "maxXText">Max X:</div>'), maxXInput);
         $(div).append(canvas, xyVal, div1, div2, plotButton);
         
@@ -76,7 +77,7 @@ var graphcalc = (function(){
         where coordinates is as long as canvas.width();*/
         
         for (var x = minX; x <= maxX; x+=(-minX+maxX)/canvas.width()){
-            var y = calculator.evaluate(fxParse, {x: x/*, sin(x): Math.sin(x), cos(x): Math.cos(x), tan(x): Math.tan(x)*/});
+            var y = calculator.evaluate(fxParse, {x: x, sin: Math.sin, cos: Math.cos, tan: Math.tan});
             var coordinates = [x, y];
             coordinateList.push(coordinates);
         }
@@ -146,7 +147,7 @@ var graphcalc = (function(){
             var yVal = coordinateList[mx][1];
             console.log("("+xVal+","+yVal+")");
 
-            $('#xyVal').val("(X, Y) = " + "(" + xVal + ", " + yVal + ")");
+            $('#xyVal').val("(X, Y) = " + "(" + xVal.toFixed(4) + ", " + yVal.toFixed(4) + ")");
         })
     }
     return exports;
