@@ -1,15 +1,16 @@
 var showCalc;
 var toggleCalc = function(){
-    if (showCalc == true){
-		$('#totalCalc').animate({"margin-right": "-460px"}, 500);
-		
-		showCalc = false;
+    var calc = $('#totalCalc');
+	var widget = $('.widget');
+	if (calc.css("opacity") == 0){
+		calc.animate({"opacity": "1"}, 500);
+		widget.animate({"margin-left": "230px", "width": "60px" ,"height": "60px"}, 500);
+
 	}else{
-		$('#totalCalc').animate({"margin-right": "0px"}, 500);
-		console.log("animate out, showCalc: " + showCalc);
-		showCalc = true;
-		console.log("showCalc: " + showCalc);
-	}
+		calc.animate({"opacity": "0"}, 500);
+		widget.animate({"margin-left": "-230px","width": "460px" ,"height": "460px"}, 500)
+
+	};
 }
 
 /*$('.widget').on("click", console.log("click"));*/
@@ -75,7 +76,7 @@ var graphcalc = (function(){
         where coordinates is as long as canvas.width();*/
         
         for (var x = minX; x <= maxX; x+=(-minX+maxX)/canvas.width()){
-            var y = calculator.evaluate(fxParse, {x: x});
+            var y = calculator.evaluate(fxParse, {x: x/*, sin(x): Math.sin(x), cos(x): Math.cos(x), tan(x): Math.tan(x)*/});
             var coordinates = [x, y];
             coordinateList.push(coordinates);
         }
