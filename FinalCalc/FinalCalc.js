@@ -1,17 +1,66 @@
 var showCalc;
+var hidden;
+
+/*var toggleIconIn = function(evt) {
+      var target = $(evt.target);
+      $('.widget').animate({"top": "-60px"}, 500);
+      var hidden = true;
+      console.log(hidden);
+}
+var toggleIconOut = function(evt){
+    target = $(evt.target);
+    $('.widget').animate({"top": "0px"}, 500);
+    var hidden = false;
+    console.log(hidden);
+}*/
+$(document).ready(function(){
+    $('body').on("mousemove", function(event){
+        console.log(event.pageY);
+        console.log(hidden);
+        if(event.pageY < 60  && hidden == true){
+            console.log(event.pageY);
+            $('.widget').animate({"top": "0px"}, 500);
+            hidden = false;
+        } else if(event.pageY >= 60 && hidden == false){
+            console.log(event.pageY);
+            $('.widget').animate({"top": "-60px"}, 500);
+            hidden = true;
+        }
+    })
+});
+
 var toggleCalc = function(){
     var calc = $('#totalCalc');
-	var widget = $('.widget');
+    var widget = $('.widget');
 	if (calc.css("opacity") == 0){
 		calc.animate({"opacity": "1"}, 500);
 		widget.animate({"margin-left": "230px", "width": "60px" ,"height": "60px"}, 500);
+        widget.animate({"top": "-60px"}, 500);
+        hidden = true;
+        var showCalc = false;
 
-	}else{
+	}else if(calc.css("opacity") == 1){
 		calc.animate({"opacity": "0"}, 500);
 		widget.animate({"margin-left": "-230px","width": "460px" ,"height": "460px"}, 500)
-
+        hidden = undefined;
+        var showCalc = true;
 	}
+    /*if (hidden === true){
+        console.log("hidden");
+        $('.hidden').on("mouseenter", toggleIconOut);
+        var hidden = false;
+    }else if(hidden === false){
+        console.log("not hidden");
+        $('.hidden').on("mouseleave", toggleIconIn);
+        var hidden = true;
+    }*/
 }
+
+
+
+
+
+
 
 /*$('.widget').on("click", console.log("click"));*/
 
@@ -139,12 +188,12 @@ var graphcalc = (function(){
             ctx2.moveTo(mx, jqCanvas.width());
             ctx2.lineTo(mx, 0);
             ctx2.strokeStyle = "black";
-            ctx2.lineWdith = 1;
+            ctx2.lineWidth = 1;
             ctx2.stroke();
             //the vertical line has just been drawn
             //now to evaluate the value at the mouse's x value
             var xVal = minX + (mx*(maxX-minX)/jqCanvas.width());
-            var yVal = coordinateList[mx][1];
+            var yVal = coordinateList[Math.round(mx)][1];
             console.log("("+xVal+","+yVal+")");
 
             $('#xyVal').val("(X, Y) = " + "(" + xVal.toFixed(4) + ", " + yVal.toFixed(4) + ")");
