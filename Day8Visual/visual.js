@@ -1,5 +1,4 @@
-var data = [4, 8, 8, 15, 16, 23, 42];
-
+data = data[3].map(function(d){return d.y;})
 var outerWidth = 300;
 var outerHeight = 300;
 
@@ -42,10 +41,10 @@ chart
 .attr("width", xScale.rangeBand())
 .attr("height", function(d){return chartHeight - yScale(d);});
 
-chart.selectAll(".barLabel").data(data).enter().append("text")
+/*chart.selectAll(".barLabel").data(data).enter().append("text")
 .attr("class", "barLabel")
 .attr("y", function(d){return yScale(d) + margin.top/4;})
 .attr("x", function(d, i){ return xScale(i) + xScale.rangeBand()/2;})
 .attr("dy", "0.7em").attr("text-anchor", "middle")
 .text(function(d){ return d;});
-
+*/
