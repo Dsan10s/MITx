@@ -1,0 +1,46 @@
+body{
+	background-image: url('dark-metal-texture.jpg');
+
+}
+#D{
+	font-weight: lighter;
+	color: white;
+	opacity: 1;
+}
+#San{
+	font-family: Verdana;
+	color: white;
+	opacity: 1;
+}
+.navbar{
+	background-color: #F00000;
+
+}
+.navbar-inner{
+	opacity: 1;
+	background-color: #F00000;
+}
+.intro{
+	margin: 30 0 30 0;
+	font-size: 55pt;
+	color: white;
+}
+.span4{
+	height: 60px;
+}
+#my{
+	font-family: Verdana;
+	font-weight: bolder;
+	color: white;
+	display: run-in;
+	text-decoration: underline;
+}
+#projects{
+	color: white;
+	font-weight: lighter;
+	position: relative;
+	text-decoration: underline;
+}
+/*#myProjects{
+	height: 34px;
+}*/

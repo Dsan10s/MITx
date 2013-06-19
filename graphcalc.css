@@ -1,0 +1,68 @@
+h1{
+	text-align: center;
+	font-family: Brandon, Helvetica, sans-serif, Arial;
+}
+.graphcalc{
+	width: 400px;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+
+}
+.graphcalc canvas{
+    background-color: #F0FFF0;
+    border: 2px solid black;
+}
+#fx{
+	float:left;
+	width: 10%;
+}
+#fxInput{
+	float:right;
+	width: 90%;
+}
+#fxDiv{
+    width: 100%;
+}
+#minMaxDiv{
+    width: 100%
+}
+#xyVal{
+	width: 100%;
+}
+#minXText{
+	width: 15%;
+	float: left;
+	position: relative;
+}
+#maxXText{
+	width: 15%;
+	position: relative;
+	float: left;
+}
+#minXInput{
+	width: 25%;
+	float: left;
+	position: relative;
+}
+#maxXInput{
+	width: 25%;
+	float: left;
+	position: relative;
+}
+#plotButton{
+	width:20%;
+	position: relative;
+	float: right;
+}
+.graphInput{
+	border-radius: 5px;
+	height: 30px;
+	font-size: 25px;
+	background-color: #eaf5bc;
+	border-width: 3px;
+}
+.text{
+	font-size: 19px;
+	font-family: Arial;
+}
