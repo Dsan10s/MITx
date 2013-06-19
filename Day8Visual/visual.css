@@ -1,0 +1,16 @@
+.chart{
+	border: 1px solid gray;
+}
+.chart rect{
+	fill: rgb(200, 50, 50);
+	stroke: white;
+}
+.chart text{
+	font: 10px sans-serif;
+}
+.chart line{
+	stroke: #ccc;
+}
+.chart .barLabel{
+	fill: white;
+}
