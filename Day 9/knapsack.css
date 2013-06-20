@@ -2,6 +2,7 @@
 	border: 1px solid black;
 	width: 300px;
 	height: 400px;
+
 }
 #knapsack{
 	border: 1px solid black;
@@ -13,13 +14,34 @@
 	width: 100px;
 	height: 100px;
 	margin: 5px;
+	position: absolute;
 }
 .itemLeft{
 	float: left;
+	
 }
 .itemRight{
 	float: right;
+	margin-left: 23%;
 }
 .knapItem{
 	opacity: 0;
+}
+#clock{
+
+}
+#painting{
+
+}
+#radio{
+	margin-top: 18%;
+}
+#vase{
+	margin-top: 18%;
+}
+#book{
+	margin-top: 36%;
+}
+#computer{
+	margin-top: 36%;
 }
