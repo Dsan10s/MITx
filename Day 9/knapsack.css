@@ -1,11 +1,13 @@
 #items{
 	border: 1px solid black;
+	border-radius: 3px;
 	width: 300px;
 	height: 400px;
 
 }
 #knapsack{
 	border: 1px solid black;
+	border-radius: 3px;
 	width: 300px;
 	height: 400px;
 
@@ -22,7 +24,7 @@
 }
 .itemRight{
 	float: right;
-	margin-left: 23%;
+	margin-left: 180px;
 }
 .knapItem{
 	opacity: 0;
@@ -34,14 +36,14 @@
 
 }
 #radio{
-	margin-top: 18%;
+	margin-top: 150px;
 }
 #vase{
-	margin-top: 18%;
+	margin-top: 150px;
 }
 #book{
-	margin-top: 36%;
+	margin-top: 300px;
 }
 #computer{
-	margin-top: 36%;
+	margin-top: 300px;
 }
