@@ -32,8 +32,8 @@ var chart = d3
 .attr("class", "chart").attr("height", outerHeight).attr("width",outerWidth)
 .append("g") // group element
 .attr("transform", "translate(" + margin.left + "," + margin.top +")")
-.on("click", function(){ grouped ? goStacked() : goGrouped();})
-.on("click", function(){ grouped ? shrinkWindow() : expandWindow();});
+.on("click", function(){ grouped ? goStacked() : goGrouped();});
+//.on("click", function(){ grouped ? shrinkWindow() : expandWindow();});
  // Same as jQuery
 
 chart.selectAll("line").data(yScale.ticks(10)).enter().append("line")
@@ -72,7 +72,7 @@ function goGrouped(){
 
 	rects.transition()
 	.duration(1000)
-	.delay(function(d, i){return i * 20})
+	.delay(function(d, i){return i * 40})
 	.attr("x", function(d, i, j){return xScale(i) + xScale.rangeBand()/stackedData.length*j;})
 	.attr("width", xScale.rangeBand()/stackedData.length)
 
@@ -88,7 +88,7 @@ function goStacked(){
 
 	rects.transition()
 	.duration(1000)
-	.delay(function(d, i){return i * 20})
+	.delay(function(d, i){return i * 40})
 	.attr("y", function(d){ return yScale(d.y0 + d.y); })
 	.attr("height", function(d){ return yScale(d.y0) - yScale(d.y0 + d.y);})
 
@@ -105,16 +105,19 @@ function shrinkWindow(){
 	outerHeight = 2000;
 	chart.transition()
 	.duration(1000)
-	.attr("height", outerHeight)
-	.attr("width", outerWidth);
+	.attr("height", 2000)
+	.attr("width", 2000);
+
+	console.log("Window shrunk");
 }
 function expandWindow(){
 	outerWidth = 500;
 	outerHeight = 500;
 	chart.transition()
 	.duration(1000)
-	.attr("height", outerHeight)
-	.attr("width", outerWidth);
+	.attr("height", 500)
+	.attr("width", 500);
+	console.log("Window expanded")
 }
 
 function fade(){

@@ -1,0 +1,55 @@
+<html>
+	<head>
+		<title>Knapsack Problem</title>
+		<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+		<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+		<script src = "knapsack.js"></script>
+		<link href="knapsack.css" rel="stylesheet">
+		<link href="css/bootstrap.css" rel="stylesheet" media="screen">
+		<script src = "js/bootstrap.min.js"></script>
+	</head>
+	<body>
+		
+		<div class = "container" id = "totalKnapsack">
+			<h1>The Knapsack problem</h1>
+			<div class="row-fluid">
+				<div class = "span6" id = "items">
+					<div class="knapsack" data-maxweight="20">
+						<div>
+							<img id = "clock" class = "item house itemLeft" src="http://web.mit.edu/6.mitx/www/demo/knapsack/clock.png" data-value ="175" data-weight="10" data-name="clock">
+							<img id = "painting" class = "item house itemRight" src="http://web.mit.edu/6.mitx/www/demo/knapsack/painting.png" data-value ="90" data-weight="9" data-name="painting">
+						</div>
+
+						<div>
+							<img id = "radio" class = "item house itemLeft" src="http://web.mit.edu/6.mitx/www/demo/knapsack/radio.png" data-value ="20" data-weight="4" data-name="radio">
+							<img id = "vase" class = "item house itemRight" src="http://web.mit.edu/6.mitx/www/demo/knapsack/vase.png" data-value ="50" data-weight="2" data-name="vase">
+						</div>
+
+						<div>
+							<img id = "book" class = "item house itemLeft" src="http://web.mit.edu/6.mitx/www/demo/knapsack/book.png" data-value ="10" data-weight="1" data-name="book">
+							<img id = "computer" class = "item house itemRight" src="http://web.mit.edu/6.mitx/www/demo/knapsack/computer.png" data-value ="200" data-weight="20" data-name="computer">
+						</div>
+					</div>
+				</div>
+				<div class = "span6" id = "knapsack">
+					<div class="knapsack" data-maxweight="20">
+						<div>
+							<img id = "clock" class = "item knapsack itemLeft knapItem" src="http://web.mit.edu/6.mitx/www/demo/knapsack/clock.png" data-value ="175" data-weight="10" data-name="clock">
+							<img id = "painting" class = "item knapsack itemRight knapItem" src="http://web.mit.edu/6.mitx/www/demo/knapsack/painting.png" data-value ="90" data-weight="9" data-name="painting">
+						</div>
+
+						<div>
+							<img id = "radio" class = "item knapsack itemLeft knapItem" src="http://web.mit.edu/6.mitx/www/demo/knapsack/radio.png" data-value ="20" data-weight="4" data-name="radio">
+							<img id = "vase" class = "item knapsack itemRight knapItem" src="http://web.mit.edu/6.mitx/www/demo/knapsack/vase.png" data-value ="50" data-weight="2" data-name="vase">
+						</div>
+
+						<div>
+							<img id = "book" class = "item knapsack itemLeft knapItem" src="http://web.mit.edu/6.mitx/www/demo/knapsack/book.png" data-value ="10" data-weight="1" data-name="book">
+							<img id = "computer" class = "item knapsack itemRight knapItem" src="http://web.mit.edu/6.mitx/www/demo/knapsack/computer.png" data-value ="200" data-weight="20" data-name="computer">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
