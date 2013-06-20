@@ -1,4 +1,6 @@
 //data = data[3].map(function(d){return d.y;})
+var color = d3.scale.ordinal().range(["#000000", "#492d2d", "#7f2424", "#bf0000"]);
+
 var outerWidth = 500;
 var outerHeight = 500;
 
@@ -30,7 +32,9 @@ var chart = d3
 .attr("class", "chart").attr("height", outerHeight).attr("width",outerWidth)
 .append("g") // group element
 .attr("transform", "translate(" + margin.left + "," + margin.top +")")
-.on("click", function(){ grouped ? goStacked() : goGrouped();}); // Same as jQuery
+.on("click", function(){ grouped ? goStacked() : goGrouped();})
+.on("click", function(){ grouped ? shrinkWindow() : expandWindow();});
+ // Same as jQuery
 
 chart.selectAll("line").data(yScale.ticks(10)).enter().append("line")
 .attr("x1", 0).attr("x2", chartWidth).attr("y1", yScale).attr("y2", yScale);
@@ -58,8 +62,9 @@ var rects = layerGroups.selectAll("rect").data(function(d){ return d;}).enter().
 .attr("width", xScale.rangeBand)
 .attr("height", function(d){return yScale(d.y0) - yScale(d.y0 + d.y);})
 .attr("class", "rect")
-//.attr("fill", function(d, i, j){ return "rgb(" + Math.round(colorScale(j) / 3 * 2) + "," + Math.round(colorScale(j) / 3) + "," + colorScale(j) + ")";})
-.on("click", topStackLeave);
+.style("fill", function(d, i, j){return color(j);})
+//.attr("fill", function (d, i, j) { return "rgb(" + Math.round(colorScale(j) / 3 * 2) + "," + Math.round(colorScale(j) / 3) + "," + colorScale(j) + ")"; })
+.on("click", topStackLeave());
 
 
 function goGrouped(){
@@ -95,6 +100,22 @@ function goStacked(){
 	grouped = false;
 }
 
+function shrinkWindow(){
+	outerWidth = 2000;
+	outerHeight = 2000;
+	chart.transition()
+	.duration(1000)
+	.attr("height", outerHeight)
+	.attr("width", outerWidth);
+}
+function expandWindow(){
+	outerWidth = 500;
+	outerHeight = 500;
+	chart.transition()
+	.duration(1000)
+	.attr("height", outerHeight)
+	.attr("width", outerWidth);
+}
 
 function fade(){
 	if (clicked == false){
@@ -108,7 +129,7 @@ function fade(){
 }
 
 function topStackLeave(){
-	layerGroups[0][topIndex].addClass("topRects");
+	//d3.select(layerGroups[0][topIndex]).addClass("topRects");
 
 	var topRects = layerGroups.select(".topRects")
 	if (grouped){
