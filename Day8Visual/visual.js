@@ -29,7 +29,8 @@ var chart = d3
 .append("svg") // Here we are appending divs to what we selected
 .attr("class", "chart").attr("height", outerHeight).attr("width",outerWidth)
 .append("g") // group element
-.attr("transform", "translate(" + margin.left + "," + margin.top +")"); // Same as jQuery
+.attr("transform", "translate(" + margin.left + "," + margin.top +")")
+.on("click", function(){ grouped ? goStacked() : goGrouped();}); // Same as jQuery
 
 chart.selectAll("line").data(yScale.ticks(10)).enter().append("line")
 .attr("x1", 0).attr("x2", chartWidth).attr("y1", yScale).attr("y2", yScale);
@@ -48,7 +49,7 @@ var layerGroups = chart.selectAll(".layer").data(stackedData).enter()
 .attr("class", "layer");
 
 for (var i; i<=3; i++){
-	chart.selectAll(".layer").attr("class", "layer" + i)
+	chart.selectAll(".layer").attr("class", "layer" + i);
 }
 
 var rects = layerGroups.selectAll("rect").data(function(d){ return d;}).enter().append("rect")
@@ -57,7 +58,9 @@ var rects = layerGroups.selectAll("rect").data(function(d){ return d;}).enter().
 .attr("width", xScale.rangeBand)
 .attr("height", function(d){return yScale(d.y0) - yScale(d.y0 + d.y);})
 .attr("class", "rect")
+//.attr("fill", function(d, i, j){ return "rgb(" + Math.round(colorScale(j) / 3 * 2) + "," + Math.round(colorScale(j) / 3) + "," + colorScale(j) + ")";})
 .on("click", topStackLeave);
+
 
 function goGrouped(){
 	yScale.domain([0, yGroupMax]);
@@ -81,12 +84,13 @@ function goStacked(){
 	rects.transition()
 	.duration(1000)
 	.delay(function(d, i){return i * 20})
-	.attr("x", function(d, i){return xScale(i);})
-	.attr("width", xScale.rangeBand())
+	.attr("y", function(d){ return yScale(d.y0 + d.y); })
+	.attr("height", function(d){ return yScale(d.y0) - yScale(d.y0 + d.y);})
 
 	.transition()
-	.attr("y", function(d){ return yScale(d.y0 + d.y); })
-	.attr("height", function(d){ return yScale(d.y0) - yScale(d.y0 + d.y);});
+	.attr("x", function(d, i){return xScale(i);})
+	.attr("width", xScale.rangeBand());
+	
 
 	grouped = false;
 }
