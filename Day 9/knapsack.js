@@ -91,37 +91,46 @@ var totalKnapsack = (function(){
 			if(target.hasClass("house")){
 				if(target.css("opacity") == 1){
 					console.log("Moving to knapsack");
-					target.animate({"opacity": 0, "height": ($(this).height()*0.80), "width": ($(this).width()*0.80)}, 250);
-					target.animate({"height": ($(this).height()), "width": ($(this).width())}, 1);
-					var otherItem = $("#knapsack" + " " + "#" + clickedID);
-					otherItem.animate({"opacity": 1, "height": ($(this).height()*1.1), "width": ($(this).width()*1.1)}, 250);
-					otherItem.animate({"height": ($(this).height()), "width": ($(this).width())}, 250);
 					
 					weight = parseInt($(".weight").html());
 					value = parseInt($(".value").html());
 
-					weight += parseInt(target.attr("data-weight"));
-					value += parseInt(target.attr("data-value"));
-					$(".weight").html(weight);
-					$(".value").html(value);
+					if(weight + parseInt(target.attr("data-weight")) > 20){
+						alert("Your bag is getting too heavy!");
+					}else{
+						target.animate({"opacity": 0, "height": ($(this).height()*0.80), "width": ($(this).width()*0.80)}, 250);
+						target.animate({"height": ($(this).height()), "width": ($(this).width())}, 1);
+						var otherItem = $("#knapsack" + " " + "#" + clickedID);
+						otherItem.animate({"opacity": 1, "height": ($(this).height()*1.1), "width": ($(this).width()*1.1)}, 250);
+						otherItem.animate({"height": ($(this).height()), "width": ($(this).width())}, 250);
+
+						weight += parseInt(target.attr("data-weight"));
+						value += parseInt(target.attr("data-value"));
+						$(".weight").html(weight);
+						$(".value").html(value);
+					}
 				}
 			}else if(target.hasClass("knapsack")){
 				if(target.css("opacity") == 1){
 					console.log("Moving to house");
-					target.animate({"opacity": 0, "height": ($(this).height()*0.80), "width": ($(this).width()*0.80)}, 250);
-					target.animate({"height": ($(this).height()), "width": ($(this).width())}, 1);
-					var otherItem = $("#items" + " " + "#" + clickedID);
-					otherItem.animate({"opacity": 1, "height": ($(this).height()*1.1), "width": ($(this).width()*1.1)}, 250);
-					otherItem.animate({"height": ($(this).height()), "width": ($(this).width())}, 250);
 
 					weight = parseInt($(".weight").html());
 					value = parseInt($(".value").html());
 
-					weight -= parseInt(target.attr("data-weight"));
-					value -= parseInt(target.attr("data-value"));
-					$(".weight").html(weight);
-					$(".value").html(value);
+					if(weight - parseInt(target.attr("data-weight")) < 0 || value - parseInt(target.attr("value")) < 0){
+						alert("YOU BROKE PHYSICS");
+					}else{
+						target.animate({"opacity": 0, "height": ($(this).height()*0.80), "width": ($(this).width()*0.80)}, 250);
+						target.animate({"height": ($(this).height()), "width": ($(this).width())}, 1);
+						var otherItem = $("#items" + " " + "#" + clickedID);
+						otherItem.animate({"opacity": 1, "height": ($(this).height()*1.1), "width": ($(this).width()*1.1)}, 250);
+						otherItem.animate({"height": ($(this).height()), "width": ($(this).width())}, 250);
 
+						weight -= parseInt(target.attr("data-weight"));
+						value -= parseInt(target.attr("data-value"));
+						$(".weight").html(weight);
+						$(".value").html(value);
+					}
 				}	
 			}
 		});
