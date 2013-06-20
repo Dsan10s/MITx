@@ -96,6 +96,14 @@ var totalKnapsack = (function(){
 					var otherItem = $("#knapsack" + " " + "#" + clickedID);
 					otherItem.animate({"opacity": 1, "height": ($(this).height()*1.1), "width": ($(this).width()*1.1)}, 250);
 					otherItem.animate({"height": ($(this).height()), "width": ($(this).width())}, 250);
+					
+					weight = parseInt($(".weight").html());
+					value = parseInt($(".value").html());
+
+					weight += parseInt(target.attr("data-weight"));
+					value += parseInt(target.attr("data-value"));
+					$(".weight").html(weight);
+					$(".value").html(value);
 				}
 			}else if(target.hasClass("knapsack")){
 				if(target.css("opacity") == 1){
@@ -105,6 +113,15 @@ var totalKnapsack = (function(){
 					var otherItem = $("#items" + " " + "#" + clickedID);
 					otherItem.animate({"opacity": 1, "height": ($(this).height()*1.1), "width": ($(this).width()*1.1)}, 250);
 					otherItem.animate({"height": ($(this).height()), "width": ($(this).width())}, 250);
+
+					weight = parseInt($(".weight").html());
+					value = parseInt($(".value").html());
+
+					weight -= parseInt(target.attr("data-weight"));
+					value -= parseInt(target.attr("data-value"));
+					$(".weight").html(weight);
+					$(".value").html(value);
+
 				}	
 			}
 		});
