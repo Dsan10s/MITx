@@ -10,28 +10,31 @@
 	<body>
 
 		<div class = "container" id = "totalKnapsack">
+			
 			<h1>The Knapsack problem</h1>
+			<p class = "message">Choose the correct combination of items to maximize your loot.  Remember that you can only carry 20kg of stuff, so choose wisely!</p>
 			<div class="row-fluid">
 				<div class = "span6" id = "items">
+					<img id = "house" src = "http://4.bp.blogspot.com/_qgHihFlhgb8/S9B9IDKVmnI/AAAAAAAAAHg/KLM9jAhndYY/s1600/house+button.png" class = "img-rounded">
 					<div class="knapsack" data-maxweight="20">
 						<div>
-							<img id = "clock" class = "item house houseClock itemLeft" src="http://web.mit.edu/6.mitx/www/demo/knapsack/clock.png" data-value ="175" data-weight="10" data-name="clock">
-							<img id = "painting" class = "item house housePainting itemRight" src="http://web.mit.edu/6.mitx/www/demo/knapsack/painting.png" data-value ="90" data-weight="9" data-name="painting">
+							<img id = "clock" class = "item house houseClock itemLeft" data-toggle="tooltip" title = "Value: 175$  Weight: 10kg" src="http://web.mit.edu/6.mitx/www/demo/knapsack/clock.png" data-value ="175" data-weight="10" data-name="clock">
+							<img id = "painting" class = "item house housePainting itemRight" data-toggle="tooltip" title = "Value: 90$  Weight: 9kg" src="http://web.mit.edu/6.mitx/www/demo/knapsack/painting.png" data-value ="90" data-weight="9" data-name="painting">
 						</div>
 
 						<div>
-							<img id = "radio" class = "item house houseRadio itemLeft" src="http://web.mit.edu/6.mitx/www/demo/knapsack/radio.png" data-value ="20" data-weight="4" data-name="radio">
-							<img id = "vase" class = "item house houseVase itemRight" src="http://web.mit.edu/6.mitx/www/demo/knapsack/vase.png" data-value ="50" data-weight="2" data-name="vase">
+							<img id = "radio" class = "item house houseRadio itemLeft" data-toggle="tooltip" title = "Value: 20$  Weight: 4kg" src="http://web.mit.edu/6.mitx/www/demo/knapsack/radio.png" data-value ="20" data-weight="4" data-name="radio">
+							<img id = "vase" class = "item house houseVase itemRight" data-toggle="tooltip" title = "Value: 50$  Weight: 2kg" src="http://web.mit.edu/6.mitx/www/demo/knapsack/vase.png" data-value ="50" data-weight="2" data-name="vase">
 						</div>
 
 						<div>
-							<img id = "book" class = "item house houseBook itemLeft" src="http://web.mit.edu/6.mitx/www/demo/knapsack/book.png" data-value ="10" data-weight="1" data-name="book">
-							<img id = "computer" class = "item house houseComputer itemRight" src="http://web.mit.edu/6.mitx/www/demo/knapsack/computer.png" data-value ="200" data-weight="20" data-name="computer">
+							<img id = "book" class = "item house houseBook itemLeft" data-toggle="tooltip" title = "Value: 10$  Weight: 1kg" src="http://web.mit.edu/6.mitx/www/demo/knapsack/book.png" data-value ="10" data-weight="1" data-name="book">
+							<img id = "computer" class = "item house houseComputer itemRight" data-toggle="tooltip" title = "Value: 200$  Weight: 20kg" src="http://web.mit.edu/6.mitx/www/demo/knapsack/computer.png" data-value ="200" data-weight="20" data-name="computer">
 						</div>
 					</div>
 				</div>
 				<div class = "span6" id = "knapsack">
-
+					<img id = "bag" src = "http://clipartist.info/www/TATARTIST.NET/C/chovynz_money_bag_icon_black_white_line_art_tattoo_tatoo-999px.png">
 					<div class="knapsack" data-maxweight="20">
 						<div>
 							<img id = "clock" class = "item knapsack knapClock itemLeft knapItem" src="http://web.mit.edu/6.mitx/www/demo/knapsack/clock.png" data-value ="175" data-weight="10" data-name="clock">
@@ -48,6 +51,7 @@
 							<img id = "computer" class = "item knapsack knapComputer itemRight knapItem" src="http://web.mit.edu/6.mitx/www/demo/knapsack/computer.png" data-value ="200" data-weight="20" data-name="computer">
 						</div>
 					</div>
+
 				</div>
 				<!-- <div class = "row-fluid"> -->
 
@@ -59,7 +63,16 @@
 
 				<!-- </div> -->
 			</div>
-			<div class = "pie-container"></div>
+			<!-- <div class = "row-fluid">
+				<div class = "span">
+					<a href="#popup" role="button" class="btn-success" data-toggle="modal">Submit</a>
+				</div>
+			</div> -->
+			<!-- <div class = "pie-container"></div> -->
+			<div id = "warning" class = "alert">
+				<button type="button" class="close" data-dismiss="alert">&times;</button>
+				<strong>Hey! </strong>That item is too heavy for your bag!
+			</div>
 		</div>
 		<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 		<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>

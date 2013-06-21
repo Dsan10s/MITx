@@ -75,6 +75,10 @@ var totalKnapsack = (function(){
 			}
 		}
 		var data = [];
+		$('.item').on("hover", function(){
+				target = $(this);
+				target.tooltip("show");
+			});
 		$('.item').on("click", function(){
 			/*target = $(this);
 			if($(this, '#items').length == 1){
@@ -91,6 +95,8 @@ var totalKnapsack = (function(){
 			//function(){
 			target = $(this);
 			var clickedID = target.attr("id");
+			
+			
 			
 
 			/*if (target.css("opacity") == 0){
@@ -109,14 +115,19 @@ var totalKnapsack = (function(){
 					value = parseInt($(".value").html());
 
 					if(weight + parseInt(target.attr("data-weight")) > 20){
-						alert("That item is too heavy for your bag!");
+						$("#warning").animate({"top": "50%"}, 1);
+						$('#warning').animate({"opacity": 1}, 500);
+						$('#warning').animate({"opacity": 1}, 2000);
+						$('#warning').animate({"opacity": 0}, 500);
+						$("#warning").animate({"top": 0}, 1);
+
 					}else{
 						target.animate({"opacity": 0, "height": ($(this).height()*0.80), "width": ($(this).width()*0.80)}, 250);
 						target.animate({"height": ($(this).height()), "width": ($(this).width())}, 1);
 						var otherItem = $("#knapsack" + " " + "#" + clickedID);
 						otherItem.animate({"opacity": 1, "height": ($(this).height()*1.1), "width": ($(this).width()*1.1)}, 250);
 						otherItem.animate({"height": ($(this).height()), "width": ($(this).width())}, 250);
-						otherItem.animate({"margin-top": "160px"}, 300);
+						otherItem.animate({"margin-top": "200px"}, 300);
 
 						weight += parseInt(target.attr("data-weight"));
 						value += parseInt(target.attr("data-value"));
@@ -158,10 +169,10 @@ var totalKnapsack = (function(){
 					if(weight - parseInt(target.attr("data-weight")) < 0 || value - parseInt(target.attr("value")) < 0){
 						alert("YOU BROKE PHYSICS");
 					}else{
-						target.animate({"margin-top": "10px"}, 300);
+						target.animate({"margin-top": "10px", "margin-left": "160px"}, 300);
 						target.animate({"opacity": 0, "height": ($(this).height()*0.80), "width": ($(this).width()*0.80)}, 250);
 						target.animate({"height": ($(this).height()), "width": ($(this).width())}, 1);
-						target.animate({"margin-left": "160px"}, 1);
+						//target.animate({"margin-left": "160px"}, 1);
 						var otherItem = $("#items" + " " + "#" + clickedID);
 						otherItem.animate({"opacity": 0}, 551)
 						otherItem.animate({"opacity": 1, "height": ($(this).height()*1.1), "width": ($(this).width()*1.1)}, 250);
@@ -257,6 +268,7 @@ $(document).ready(function(){
 	$('#totalKnapsack').each(function(){
 		totalKnapsack.setup($(this));
 	});
+
 });
 
 /* Game plan:
