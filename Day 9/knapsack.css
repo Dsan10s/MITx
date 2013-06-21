@@ -1,14 +1,14 @@
 #items{
 	border: 1px solid black;
-	border-radius: 3px;
-	width: 300px;
+	border-radius: 10px;
+	/*width: 300px;*/
 	height: 400px;
 
 }
 #knapsack{
 	border: 1px solid black;
-	border-radius: 3px;
-	width: 300px;
+	border-radius: 10px;
+	/*width: 300px;*/
 	height: 400px;
 
 }
@@ -20,11 +20,11 @@
 }
 .itemLeft{
 	float: left;
-	
+	margin-left: 30px;
 }
 .itemRight{
 	float: right;
-	margin-left: 180px;
+	margin-left: 320px;
 }
 .knapItem{
 	opacity: 0;
@@ -42,8 +42,23 @@
 	margin-top: 150px;
 }
 #book{
-	margin-top: 300px;
+	margin-top: 280px;
 }
 #computer{
-	margin-top: 300px;
+	margin-top: 280px;
+}
+.valueText{
+	position: absolute;
+	margin-top: 410px;
+}
+.remainingText{
+	position: absolute;
+	left: 50%;
+	margin-left: -121px;
+	margin-top: 410px;
+}
+.weightText{
+	position: absolute;
+	margin-left: 750px;
+	margin-top: 410px;
 }

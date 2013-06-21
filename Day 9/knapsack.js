@@ -59,11 +59,21 @@ var totalKnapsack = (function(){
 
 	// We will use model view controller setup
 	function setup(div){
+		var exports = {};
 		var model = Model();
 		var controller = Controller(model);
 		var view1 = View(div, model, controller); // These two views will respectively reperesent
 		var view2 = View(div, model, controller); // the items in the house and the knapsack
 
+		
+
+		//var color = d3.scale.category20();
+
+		function fillArray(){
+			return {
+				port: "port", 
+			}
+		}
 		$('.item').on("click", function(){
 			/*target = $(this);
 			if($(this, '#items').length == 1){
@@ -93,10 +103,11 @@ var totalKnapsack = (function(){
 					console.log("Moving to knapsack");
 					
 					weight = parseInt($(".weight").html());
+					remainingWeight = parseInt($(".remaining").html());
 					value = parseInt($(".value").html());
 
 					if(weight + parseInt(target.attr("data-weight")) > 20){
-						alert("Your bag is getting too heavy!");
+						alert("That item is too heavy for your bag!");
 					}else{
 						target.animate({"opacity": 0, "height": ($(this).height()*0.80), "width": ($(this).width()*0.80)}, 250);
 						target.animate({"height": ($(this).height()), "width": ($(this).width())}, 1);
@@ -106,8 +117,17 @@ var totalKnapsack = (function(){
 
 						weight += parseInt(target.attr("data-weight"));
 						value += parseInt(target.attr("data-value"));
+
+						var newData = {}
+						newData["weight"] = parseInt(target.attr("data-weight"));
+						data.push(newData);
+						console.log(data);
+
+						remainingWeight -= parseInt(target.attr("data-weight"));
+
 						$(".weight").html(weight);
 						$(".value").html(value);
+						$(".remaining").html(remainingWeight);
 					}
 				}
 			}else if(target.hasClass("knapsack")){
@@ -115,7 +135,12 @@ var totalKnapsack = (function(){
 					console.log("Moving to house");
 
 					weight = parseInt($(".weight").html());
+					remainingWeight = parseInt($(".remaining").html());
 					value = parseInt($(".value").html());
+
+					var newData = {}
+					data.splice(data.length - 1, 1);
+					console.log(data);
 
 					if(weight - parseInt(target.attr("data-weight")) < 0 || value - parseInt(target.attr("value")) < 0){
 						alert("YOU BROKE PHYSICS");
@@ -128,12 +153,37 @@ var totalKnapsack = (function(){
 
 						weight -= parseInt(target.attr("data-weight"));
 						value -= parseInt(target.attr("data-value"));
+						remainingWeight += parseInt(target.attr("data-weight"));
+
 						$(".weight").html(weight);
 						$(".value").html(value);
+						$(".remaining").html(remainingWeight);
 					}
 				}	
 			}
 		});
+		var data = [];
+
+		var pieWidth = 500, pieHeight = 500, radius = Math.min(pieWidth, pieHeight) / 2;
+
+		var pie = d3.layout.pie();
+		var pieData = pie(data);
+
+		var color = d3.scale.ordinal()
+		.range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+
+		var arc = d3.svg.arc()
+		.outerRadius(radius - 10)
+		.innerRadius(0);
+
+		var chart = d3.select(".pie-container").append("svg")
+		.attr("class", "chart")
+		.attr("height", pieHeight)
+		.attr("width", pieWidth);
+
+
+		//});
+		return {data: data};
 	}
 
 	return {setup: setup};

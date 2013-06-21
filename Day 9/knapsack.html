@@ -1,9 +1,8 @@
 <html>
 	<head>
 		<title>Knapsack Problem</title>
-		<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-		<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-		<script src = "knapsack.js"></script>
+		<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+		
 		<link href="knapsack.css" rel="stylesheet">
 		<link href="css/bootstrap.css" rel="stylesheet" media="screen">
 		<script src = "js/bootstrap.min.js"></script>
@@ -50,15 +49,21 @@
 						</div>
 					</div>
 				</div>
-				<div class = "row">
-					<div class = "span6">
-						<h3> Value: <span class = "value">0</span></h2>
-					</div>
-					<div class = "span6">
-						<h3> Weight: <span class = "weight">0</span>/20kg</h2>
-					</div>
-				</div>
+				<!-- <div class = "row-fluid"> -->
+					
+						<h3 class = "valueText"> Value: <span class = "value">0</span>$</h3>
+					
+						<h3 class = "remainingText"> Remaining Weight: <span class = "remaining">20</span>kg</h3>
+
+						<h3 class = "weightText"> Weight: <span class = "weight">0</span>/20kg</h2>
+					
+				<!-- </div> -->
 			</div>
+			<div class = "pie-container"></div>
 		</div>
+		<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+		<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+		<script src = "knapsack.js"></script>
+		
 	</body>
 </html>
