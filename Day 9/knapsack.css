@@ -132,3 +132,10 @@
 	left: 50%;
 	margin-left: -250px;
 }
+#again{
+	width: 500px;
+	opacity: 0;
+	position: absolute;
+	left: 50%;
+	margin-left: -250px;
+}
