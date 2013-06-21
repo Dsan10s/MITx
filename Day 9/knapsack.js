@@ -65,7 +65,7 @@ var totalKnapsack = (function(){
 		var view1 = View(div, model, controller); // These two views will respectively reperesent
 		var view2 = View(div, model, controller); // the items in the house and the knapsack
 
-		
+
 
 		//var color = d3.scale.category20();
 
@@ -74,6 +74,7 @@ var totalKnapsack = (function(){
 				port: "port", 
 			}
 		}
+		var data = [];
 		$('.item').on("click", function(){
 			/*target = $(this);
 			if($(this, '#items').length == 1){
@@ -90,6 +91,7 @@ var totalKnapsack = (function(){
 			//function(){
 			target = $(this);
 			var clickedID = target.attr("id");
+			
 
 			/*if (target.css("opacity") == 0){
 				console.log(target);
@@ -97,11 +99,11 @@ var totalKnapsack = (function(){
 				target.animate({"height": ($(this).height()), "width": ($(this).width())}, 250);
 
 			}else */
-			
+
 			if(target.hasClass("house")){
 				if(target.css("opacity") == 1){
 					console.log("Moving to knapsack");
-					
+
 					weight = parseInt($(".weight").html());
 					remainingWeight = parseInt($(".remaining").html());
 					value = parseInt($(".value").html());
@@ -114,6 +116,7 @@ var totalKnapsack = (function(){
 						var otherItem = $("#knapsack" + " " + "#" + clickedID);
 						otherItem.animate({"opacity": 1, "height": ($(this).height()*1.1), "width": ($(this).width()*1.1)}, 250);
 						otherItem.animate({"height": ($(this).height()), "width": ($(this).width())}, 250);
+						otherItem.animate({"margin-top": "160px"}, 300);
 
 						weight += parseInt(target.attr("data-weight"));
 						value += parseInt(target.attr("data-value"));
@@ -121,6 +124,7 @@ var totalKnapsack = (function(){
 						var newData = {}
 						newData[target.attr("data-name")] = parseInt(target.attr("data-weight"));
 						data.push(newData);
+						console.log(data.length);
 						console.log(data);
 
 						remainingWeight -= parseInt(target.attr("data-weight"));
@@ -131,6 +135,7 @@ var totalKnapsack = (function(){
 					}
 				}
 			}else if(target.hasClass("knapsack")){
+				console.log(target.css("opacity"));
 				if(target.css("opacity") == 1){
 					console.log("Moving to house");
 
@@ -153,11 +158,15 @@ var totalKnapsack = (function(){
 					if(weight - parseInt(target.attr("data-weight")) < 0 || value - parseInt(target.attr("value")) < 0){
 						alert("YOU BROKE PHYSICS");
 					}else{
+						target.animate({"margin-top": "10px"}, 300);
 						target.animate({"opacity": 0, "height": ($(this).height()*0.80), "width": ($(this).width()*0.80)}, 250);
 						target.animate({"height": ($(this).height()), "width": ($(this).width())}, 1);
+						target.animate({"margin-left": "160px"}, 1);
 						var otherItem = $("#items" + " " + "#" + clickedID);
+						otherItem.animate({"opacity": 0}, 551)
 						otherItem.animate({"opacity": 1, "height": ($(this).height()*1.1), "width": ($(this).width()*1.1)}, 250);
 						otherItem.animate({"height": ($(this).height()), "width": ($(this).width())}, 250);
+
 
 						weight -= parseInt(target.attr("data-weight"));
 						value -= parseInt(target.attr("data-value"));
@@ -170,7 +179,53 @@ var totalKnapsack = (function(){
 				}	
 			}
 		});
+		if (data.length != 1){
+			console.log("data length: " + data.length);
+			$('#knapsack').on("mouseenter", function(){
+				if($("#knapsack #clock").css("margin-top") != "10px"){
+					$('#knapsack #clock').animate({"margin-left": "30px", "margin-top": "5px"}, 300);
+				}
+				if($("#knapsack #radio").css("margin-top") != "10px"){
+					$('#knapsack #radio').animate({"margin-left": "320px", "margin-top": "5px"}, 300);
+				}
+				if($("#knapsack #book").css("margin-top") != "10px"){
+					$('#knapsack #book').animate({"margin-left": "30px", "margin-top": "150px"}, 300);
+				}
+				if($("#knapsack #painting").css("margin-top") != "10px"){
+					$('#knapsack #painting').animate({"margin-left": "320px", "margin-top": "150px"}, 300);
+				}
+				if($("#knapsack #vase").css("margin-top") != "10px"){
+					$('#knapsack #vase').animate({"margin-left": "30px", "margin-top": "280px"}, 300);
+				}
+				if($("#knapsack #computer").css("margin-top") != "10px"){
+					$('#knapsack #computer').animate({"margin-left": "320px", "margin-top": "280px"}, 300);
+				}
+
+			});
+			$('#knapsack').on("mouseleave", function(){
+				if($("#knapsack #clock").css("margin-left") != "160px"){
+					$('#knapsack #clock').animate({"margin-left": "170px", "margin-top": "160px"}, 300);
+				}
+				if($("#knapsack #radio").css("margin-left") != "160px"){
+					$('#knapsack #radio').animate({"margin-left": "155px", "margin-top": "160px"}, 300);
+				}
+				if($("#knapsack #book").css("margin-left") != "160px"){	
+					$('#knapsack #book').animate({"margin-left": "185px", "margin-top": "160px"}, 300);
+				}
+				if($("#knapsack #painting").css("margin-left") != "160px"){	
+					$('#knapsack #painting').animate({"margin-left": "160px", "margin-top": "160px"}, 300);
+				}	
+				if($("#knapsack #vase").css("margin-left") != "160px"){
+					$('#knapsack #vase').animate({"margin-left": "175px", "margin-top": "160px"}, 300);
+				}	
+				if($("#knapsack #computer").css("margin-left") != "160px"){	
+					$('#knapsack #computer').animate({"margin-left": "135px", "margin-top": "160px"}, 300);
+				}	
+			});
+		
+		}
 		var data = [];
+		
 
 		var pieWidth = 500, pieHeight = 500, radius = Math.min(pieWidth, pieHeight) / 2;
 

@@ -150,6 +150,40 @@ function topStackLeave(){
 	topIndex--;
 }
 
+var newData = [{"y": 0}, {"y": 1}, {"y": 9}, {"y": 3}, {"y": 4}];
+
+var color = d3.scale.ordinal().range(["#000000", "#492d2d", "#7f2424", "#bf0000", "#ff0000", "#0000ff"]);
+
+var width = 940;
+var height = 50;
+
+var stack = d3.layout.stack();
+
+var stackedData = stack(newData);
+
+//var yStackMax = d3.max(stackedData, function(layer){ return d3.max(layer, function(d){return d.y + d.y0; })});
+
+var xStackMax = 20;
+
+var xScale = d3.scale.linear().domain([0, xStackMax]).range([0, width]);
+
+var chart = d3.select(".progress-bar")
+.append("svg")
+.attr("class", "chart")
+.attr("height", height)
+.attr("width", width)
+.append("g");
+
+var layerGroups = chart.selectAll(".layer").data(stackedData).enter()
+.append("g")
+.attr("class", "layer");
+
+var rects = layerGroups.selectAll("rect").data(function(d){ return d; }).enter().append("rect")
+.attr("x", function(d){ return xScale(d.y0 + d.y);})
+.attr("y", height)
+.attr("class", "rect")
+.style("fill", function(d, i, j){return color(j);});
+
 // chart.selectAll("rect") //We are selected all the divs in chart (THEY DON'T EXIST YET BUT THAT'S OK)
 // .data(data) //takes all the data from our var data
 // .enter() //enter = nodes that aren't there yet

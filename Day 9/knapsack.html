@@ -2,31 +2,31 @@
 	<head>
 		<title>Knapsack Problem</title>
 		<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-		
+
 		<link href="knapsack.css" rel="stylesheet">
 		<link href="css/bootstrap.css" rel="stylesheet" media="screen">
 		<script src = "js/bootstrap.min.js"></script>
 	</head>
 	<body>
-		
+
 		<div class = "container" id = "totalKnapsack">
 			<h1>The Knapsack problem</h1>
 			<div class="row-fluid">
 				<div class = "span6" id = "items">
 					<div class="knapsack" data-maxweight="20">
 						<div>
-							<img id = "clock" class = "item house itemLeft" src="http://web.mit.edu/6.mitx/www/demo/knapsack/clock.png" data-value ="175" data-weight="10" data-name="clock">
-							<img id = "painting" class = "item house itemRight" src="http://web.mit.edu/6.mitx/www/demo/knapsack/painting.png" data-value ="90" data-weight="9" data-name="painting">
+							<img id = "clock" class = "item house houseClock itemLeft" src="http://web.mit.edu/6.mitx/www/demo/knapsack/clock.png" data-value ="175" data-weight="10" data-name="clock">
+							<img id = "painting" class = "item house housePainting itemRight" src="http://web.mit.edu/6.mitx/www/demo/knapsack/painting.png" data-value ="90" data-weight="9" data-name="painting">
 						</div>
 
 						<div>
-							<img id = "radio" class = "item house itemLeft" src="http://web.mit.edu/6.mitx/www/demo/knapsack/radio.png" data-value ="20" data-weight="4" data-name="radio">
-							<img id = "vase" class = "item house itemRight" src="http://web.mit.edu/6.mitx/www/demo/knapsack/vase.png" data-value ="50" data-weight="2" data-name="vase">
+							<img id = "radio" class = "item house houseRadio itemLeft" src="http://web.mit.edu/6.mitx/www/demo/knapsack/radio.png" data-value ="20" data-weight="4" data-name="radio">
+							<img id = "vase" class = "item house houseVase itemRight" src="http://web.mit.edu/6.mitx/www/demo/knapsack/vase.png" data-value ="50" data-weight="2" data-name="vase">
 						</div>
 
 						<div>
-							<img id = "book" class = "item house itemLeft" src="http://web.mit.edu/6.mitx/www/demo/knapsack/book.png" data-value ="10" data-weight="1" data-name="book">
-							<img id = "computer" class = "item house itemRight" src="http://web.mit.edu/6.mitx/www/demo/knapsack/computer.png" data-value ="200" data-weight="20" data-name="computer">
+							<img id = "book" class = "item house houseBook itemLeft" src="http://web.mit.edu/6.mitx/www/demo/knapsack/book.png" data-value ="10" data-weight="1" data-name="book">
+							<img id = "computer" class = "item house houseComputer itemRight" src="http://web.mit.edu/6.mitx/www/demo/knapsack/computer.png" data-value ="200" data-weight="20" data-name="computer">
 						</div>
 					</div>
 				</div>
@@ -34,29 +34,29 @@
 
 					<div class="knapsack" data-maxweight="20">
 						<div>
-							<img id = "clock" class = "item knapsack itemLeft knapItem" src="http://web.mit.edu/6.mitx/www/demo/knapsack/clock.png" data-value ="175" data-weight="10" data-name="clock">
-							<img id = "painting" class = "item knapsack itemRight knapItem" src="http://web.mit.edu/6.mitx/www/demo/knapsack/painting.png" data-value ="90" data-weight="9" data-name="painting">
+							<img id = "clock" class = "item knapsack knapClock itemLeft knapItem" src="http://web.mit.edu/6.mitx/www/demo/knapsack/clock.png" data-value ="175" data-weight="10" data-name="clock">
+							<img id = "painting" class = "item knapsack knapPainting itemRight knapItem" src="http://web.mit.edu/6.mitx/www/demo/knapsack/painting.png" data-value ="90" data-weight="9" data-name="painting">
 						</div>
 
 						<div>
-							<img id = "radio" class = "item knapsack itemLeft knapItem" src="http://web.mit.edu/6.mitx/www/demo/knapsack/radio.png" data-value ="20" data-weight="4" data-name="radio">
-							<img id = "vase" class = "item knapsack itemRight knapItem" src="http://web.mit.edu/6.mitx/www/demo/knapsack/vase.png" data-value ="50" data-weight="2" data-name="vase">
+							<img id = "radio" class = "item knapsack knapRadio itemLeft knapItem" src="http://web.mit.edu/6.mitx/www/demo/knapsack/radio.png" data-value ="20" data-weight="4" data-name="radio">
+							<img id = "vase" class = "item knapsack knapVase itemRight knapItem" src="http://web.mit.edu/6.mitx/www/demo/knapsack/vase.png" data-value ="50" data-weight="2" data-name="vase">
 						</div>
 
 						<div>
-							<img id = "book" class = "item knapsack itemLeft knapItem" src="http://web.mit.edu/6.mitx/www/demo/knapsack/book.png" data-value ="10" data-weight="1" data-name="book">
-							<img id = "computer" class = "item knapsack itemRight knapItem" src="http://web.mit.edu/6.mitx/www/demo/knapsack/computer.png" data-value ="200" data-weight="20" data-name="computer">
+							<img id = "book" class = "item knapsack knapBook itemLeft knapItem" src="http://web.mit.edu/6.mitx/www/demo/knapsack/book.png" data-value ="10" data-weight="1" data-name="book">
+							<img id = "computer" class = "item knapsack knapComputer itemRight knapItem" src="http://web.mit.edu/6.mitx/www/demo/knapsack/computer.png" data-value ="200" data-weight="20" data-name="computer">
 						</div>
 					</div>
 				</div>
 				<!-- <div class = "row-fluid"> -->
-					
+
 						<h3 class = "valueText"> Value: <span class = "value">0</span>$</h3>
-					
+
 						<h3 class = "remainingText"> Remaining Weight: <span class = "remaining">20</span>kg</h3>
 
 						<h3 class = "weightText"> Weight: <span class = "weight">0</span>/20kg</h2>
-					
+
 				<!-- </div> -->
 			</div>
 			<div class = "pie-container"></div>
@@ -64,6 +64,6 @@
 		<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 		<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 		<script src = "knapsack.js"></script>
-		
+
 	</body>
 </html>

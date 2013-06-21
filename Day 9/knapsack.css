@@ -29,22 +29,53 @@
 .knapItem{
 	opacity: 0;
 }
-#clock{
+
+#knapsack #clock{
+	margin-left: 160px;
+	margin-top: 10px;
+	position: absolute;
+}
+#knapsack #radio{
+	margin-left: 160px;
+	margin-top: 10px;
+	position: absolute;
+}
+#knapsack #book{
+	margin-left: 160px;
+	margin-top: 10px;
+	position: absolute;
+}
+#knapsack #painting{
+	margin-left: 160px;
+	margin-top: 10px;
+	position: absolute;
+}
+#knapsack #vase{
+	margin-left: 160px;
+	margin-top: 10px;
+	position: absolute;
+}
+#knapsack #computer{
+	margin-left: 160px;
+	margin-top: 10px;
+	position: absolute;
+}
+#items #clock{
 
 }
-#painting{
+#items #painting{
 
 }
-#radio{
+#items #radio{
 	margin-top: 150px;
 }
-#vase{
+#items #vase{
 	margin-top: 150px;
 }
-#book{
+#items #book{
 	margin-top: 280px;
 }
-#computer{
+#items #computer{
 	margin-top: 280px;
 }
 .valueText{
