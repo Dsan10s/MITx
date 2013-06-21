@@ -119,7 +119,7 @@ var totalKnapsack = (function(){
 						value += parseInt(target.attr("data-value"));
 
 						var newData = {}
-						newData["weight"] = parseInt(target.attr("data-weight"));
+						newData[target.attr("data-name")] = parseInt(target.attr("data-weight"));
 						data.push(newData);
 						console.log(data);
 
@@ -139,7 +139,15 @@ var totalKnapsack = (function(){
 					value = parseInt($(".value").html());
 
 					var newData = {}
-					data.splice(data.length - 1, 1);
+					for (var i = 0; i < data.length; i++){
+						var key = Object.keys(data[i])[0];
+						if (key == target.attr("data-name")){
+							console.log(key);
+							data.splice(i, 1);
+							break;
+						}
+
+					}
 					console.log(data);
 
 					if(weight - parseInt(target.attr("data-weight")) < 0 || value - parseInt(target.attr("value")) < 0){
