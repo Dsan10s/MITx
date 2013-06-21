@@ -117,3 +117,18 @@
 	left: 50%;
 	margin-left: -250px;
 }
+#submit{
+	width: 90px;
+	height: 30px;
+	margin-top: 50px;
+	border-radius: 5px;
+	left: 50%;
+	margin-left: 10px;
+}
+#success{
+	width: 500px;
+	opacity: 0;
+	position: absolute;
+	left: 50%;
+	margin-left: -250px;
+}

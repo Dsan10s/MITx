@@ -75,6 +75,15 @@ var totalKnapsack = (function(){
 			}
 		}
 		var data = [];
+		$("#submit").on("click", function(){
+			if ($(".value").html() == 275){
+				$("#success").animate({"top": "50%"}, 1);
+				$('#success').animate({"opacity": 1}, 500);
+				$('#success').animate({"opacity": 1}, 2000);
+				$('#success').animate({"opacity": 0}, 500);
+				$("#success").animate({"top": 0}, 1);
+			}
+		})
 		$('.item').on("hover", function(){
 				target = $(this);
 				target.tooltip("show");
