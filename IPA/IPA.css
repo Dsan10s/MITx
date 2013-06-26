@@ -1,10 +1,37 @@
+body{
+	margin: 5px;
+}
 button{
-	width: 25px;
-	height: 20px;
+	
 }
 audio{
 	width: 40px;
 	height: 10px;
 	position: absolute;
 
+}
+.desc{
+	padding: 4px;
+}
+tr td div button{
+	width: 25px;
+	height: 100%;
+	margin-right: auto;
+	margin-left: auto;
+	display: block;
+	border-radius: 5px;
+	background-color: white;
+	border: 1px solid white;
+}
+/*.popover-content{
+	background-color: #515151;
+	color: white;
+	border-radius: 5px;
+	border-color: #515151;
+}
+.arrow{
+	color: #515151;
+}*/
+.np-consonants{
+	width: 50%;
 }
